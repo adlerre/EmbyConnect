@@ -1,13 +1,14 @@
-<% include ../header.tpl %>
-    <itemDetailWithImageHeader layout="compact" id="Movie-Details">
+<% include ../../header.tpl %>
+    <itemDetailWithImageHeader layout="full" id="Movie-Details">
       <styles>
         <color name="titleColor"><%- colors.titleColor %></color>
         <color name="metadataColor"><%- colors.metadataColor %></color>
+        <color name="textColor"><%- colors.titleColor %></color>
       </styles>
       
       <header>
         <imageHeader>
-          <image insets="0, -200, 900, 400" required="true"><%=: item.Id | imageUrl:'Backdrop',1080 %></image>
+          <image insets="0, 0, 800, 0" required="true"><%=: item.Id | imageUrl:'Backdrop',1080 %></image>
         </imageHeader>
       </header>
       
@@ -88,7 +89,8 @@
                   <focusedImage>resource://PreviewFocused.png</focusedImage>
                 </actionButton>
                 -->
-                <actionButton id="play" accessibilityLabel="<%= __('label.play') %>" onSelect="atv.loadURL('<%=: [type, item.Id, "play"] | buildUrl %>');">
+                <actionButton id="play" accessibilityLabel="<%= __('label.play') %>" 
+                  onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id, "play"] | buildUrl %>');">
                   <title><%= __("label.play") %></title>
                   <image>resource://Play.png</image>
                   <focusedImage>resource://PlayFocused.png</focusedImage>
@@ -125,7 +127,8 @@
               <items>
                 <% items.forEach(function(item, index) { %>
                 <moviePoster id="shelf_item_<%- index %>" accessibilityLabel="<%= item.Name %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [type, item.Id] | buildUrl %>');" onPlay="atv.loadURL('<%=: [type, item.Id] | buildUrl %>');">
+                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');" 
+                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');">
                   <title><%= item.Name %></title>
                   <image><%=: item.Id | imageUrl:'Primary',384 %></image>
                   <defaultImage>resource://Poster.png</defaultImage>
@@ -180,7 +183,7 @@
                         <label><%= p.Name %></label>
                         <label2><%= p.Role %></label2>
                         <preview>
-                          <link><%=: [type, "person", p.Id, "preview"] | buildUrl %></link>
+                          <link><%=: [params.serverId, params.libType, params.libId, "person", p.Id, "preview"] | buildUrl:{"includeItemTypes" : params.itemType} %></link>
                         </preview>
                       </twoLineMenuItem>
                     <% }) %>
@@ -199,4 +202,4 @@
         </listScrollerSplit>
       </moreInfo>
     </itemDetailWithImageHeader>
-<% include ../footer.tpl %>
+<% include ../../footer.tpl %>

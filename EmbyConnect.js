@@ -197,8 +197,6 @@ express.get("/:serverId/:libType/:libId/:itemType/:itemId/:view?", function (req
     var params = req.params;
     params.view = params.view || "index";
 
-    logger.info(params);
-
     embyClient.useParams(req.query);
 
     var promises = [ {
@@ -222,6 +220,25 @@ express.get("/:serverId/:libType/:libId/:itemType/:itemId/:view?", function (req
             resultName : "items",
             resultProperty : "Items"
         });
+
+        if (utils.equalsIgnoreCase(params.view, "index-bd")) {
+            promises.push({
+                promise : utils.imgBackgroundDominant(embyClient.getImageUrl(params.itemId, {
+                    type : "Backdrop",
+                    quality : 80,
+                    maxHeight : 1080
+                })).then(function (result) {
+                    return new Promise(function (resolve) {
+                        resolve({
+                            titleColor : result[1].brighten().hex(),
+                            metadataColor : result[1].brighten().hex()
+                        })
+                    });
+                }),
+                optional : true,
+                resultName : "colors",
+            });
+        }
     } else if (utils.equalsIgnoreCase(params.itemType, "series")) {
         promises.push({
             promise : embyClient.getSeasons(params.itemId),
@@ -256,7 +273,6 @@ express.get("/:serverId/:libType/:libId/:itemType/:itemId/:view?", function (req
     }
 
     utils.promiseParallel(promises).then(function (result) {
-        logger.info(result[0]);
         WebServer.render(res, params.libType + "/" + params.itemType + "/" + params.view, utils.mapPromiseResults({
             params : params,
             query : req.query
