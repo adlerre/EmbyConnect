@@ -1,0 +1,93 @@
+{
+	"%s mins": {
+		"one": "%d minute",
+		"other": "%d minutes"
+	},
+	"%s movie": {
+		"one": "%d Movie",
+		"other": "%d Movies"
+	},
+	"%s series": {
+		"one": "%d Serie",
+		"other": "%d Series"
+	},
+	"%s-today": "%s-Today",
+	"season %s": "Season %d",
+	"format": {
+		"date": "isoDate"
+	},
+	"label": {
+		"actors": {
+			"one": "Actor",
+			"other": "Actors"
+		},
+		"audioAndSubtitle": "Audio and Subtitle",
+		"details": "Details",
+		"directors": {
+			"one": "Director",
+			"other": "Directors"
+		},
+		"genres": {
+			"one": "Genre",
+			"other": "Genres"
+		},
+		"producers": {
+			"one": "Producer",
+			"other": "Producer"
+		},
+		"writers": {
+			"one": "Writer",
+			"other": "Writers"
+		},
+		"seasons": {
+			"one": "Season",
+			"other": "Seasons"
+		},
+		"movies": {
+			"one": "Movie",
+			"other": "Movies"
+		},
+		"length": "Playtime",
+		"play": "Play",
+		"trailer": "Trailer",
+		"more": "More",
+		"similar": "More like this",
+		"dateOfBirth": "Date of birth",
+		"placeOfBirth": "Place of birth",
+		"otherSeasons": "Other Seasons",
+		"special": "Special",
+		"allShows": "All Shows",
+		"newest": "Newest",
+		"unwatched": "Unwatched",
+		"resumeWatch": "Resume Watch",
+		"nextUp": "Next Up",
+		"settings": "Settings",
+		"unknown": "Unknown",
+		"latest": {
+			"movies": "Newest Movies",
+			"music": "Newest Music",
+			"tvshows": "Newest TV Shows"
+		},
+		"released": "Released"
+	},
+	"library": {
+		"one": "Library",
+		"other": "Libraries",
+		"movies": {
+			"one": "Movie",
+			"other": "Movies"
+		},
+		"music": {
+			"one": "Music",
+			"other": "Music"
+		},
+		"tvshows": {
+			"one": "TV Show",
+			"other": "TV Shows"
+		},
+		"boxsets": {
+			"one": "Collection",
+			"other": "Collections"
+		}
+	}
+}

@@ -1,0 +1,1 @@
+<% include ../../person/preview.tpl %>

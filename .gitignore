@@ -1,0 +1,5 @@
+/.project
+/.settings/
+/assets/certificates/*
+!/assets/certificates/README.md
+/node_modules/

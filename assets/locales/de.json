@@ -1,0 +1,93 @@
+{
+	"%s mins": {
+		"one": "%d Minute",
+		"other": "%d Minuten"
+	},
+	"%s movie": {
+		"one": "%d Film",
+		"other": "%d Filme"
+	},
+	"%s series": {
+		"one": "%d Serie",
+		"other": "%d Serien"
+	},
+	"%s-today": "%s-Heute",
+	"season %s": "Staffel %d",
+	"format": {
+        "date": "dd.mm.yyyy"
+    },
+	"label": {
+		"actors": {
+			"one": "Schauspieler",
+			"other": "Schauspieler"
+		},
+		"audioAndSubtitle": "Audio und Untertitel",
+		"details": "Details",
+		"directors": {
+			"one": "Regisseur",
+			"other": "Regisseure"
+		},
+		"genres": {
+			"one": "Genre",
+			"other": "Genres"
+		},
+		"producers": {
+			"one": "Produzent",
+			"other": "Produzenten"
+		},
+		"writers": {
+			"one": "Drehbuchautor",
+			"other": "Drehbuchautoren"
+		},
+		"seasons": {
+			"one": "Staffel",
+			"other": "Staffeln"
+		},
+		"movies": {
+			"one": "Film",
+			"other": "Filme"
+		},
+		"length": "Spieldauer",
+		"play": "Abspielen",
+		"trailer": "Trailer",
+		"more": "Mehr",
+		"similar": "Mehr wie dieses",
+		"dateOfBirth": "Geburtsdatum",
+		"placeOfBirth": "Geburtsort",
+		"otherSeasons": "Andere Staffeln",
+		"special": "Special",
+		"allShows": "Alle Serien",
+		"newest": "Neueste",
+		"unwatched": "Ungesehene",
+		"resumeWatch": "Weiterschauen",
+		"nextUp": "Als Nächstes",
+		"settings": "Einstellungen",
+		"unknown": "Unbekannt",
+		"latest": {
+			"movies": "Neueste Filme",
+			"music": "Neueste Musik",
+			"tvshows": "Neueste TV Shows"
+		},
+		"released": "Veröffentlicht"
+	},
+	"library": {
+		"one": "Bibliothek",
+		"other": "Bibliotheken",
+		"movies": {
+			"one": "Film",
+			"other": "Filme"
+		},
+		"music": {
+			"one": "Musik",
+			"other": "Musik"
+		},
+		"tvshows": {
+			"one": "TV-Sendung",
+			"other": "TV-Sendungen"
+		},
+		"boxsets": {
+			"one": "Zusammenstellung",
+			"other": "Zusammenstellungen"
+		}
+	}
+}
