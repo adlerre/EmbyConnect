@@ -63,6 +63,8 @@
 		"nextUp": "Next Up",
 		"settings": "Settings",
 		"unknown": "Unknown",
+		"album": "Album",
+		"artist": "Artist",
 		"latest": {
 			"movies": "Newest Movies",
 			"music": "Newest Music",

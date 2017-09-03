@@ -174,6 +174,15 @@ express.get("/:serverId/:libType/:libId/:view?", function (req, res) {
             }),
             resultName : "items"
         });
+    } else if (utils.equalsIgnoreCase(params.libType, "music")) {
+        promises.push({
+            promise : embyClient.getItems(params.libId, {
+                IncludeItemTypes : "MusicAlbum",
+                recursive : true
+            }),
+            resultName : "items",
+            resultProperty : "Items"
+        });
     } else {
         promises.push({
             promise : embyClient.getItems(params.libId),
@@ -183,6 +192,7 @@ express.get("/:serverId/:libType/:libId/:view?", function (req, res) {
     }
 
     utils.promiseParallel(promises).then(function (result) {
+        logger.debug(result[0]);
         WebServer.render(res, params.libType + "/" + params.view || "index", utils.mapPromiseResults({
             params : params,
             query : req.query
@@ -270,9 +280,18 @@ express.get("/:serverId/:libType/:libId/:itemType/:itemId/:view?", function (req
             resultName : "relatedItems",
             resultProperty : "Items"
         });
+    } else if (utils.equalsIgnoreCase(params.itemType, "musicalbum")) {
+        promises.push({
+            promise : embyClient.getItems(params.itemId, {
+                AlbumIds : params.itemId
+            }),
+            resultName : "items",
+            resultProperty : "Items"
+        });
     }
 
     utils.promiseParallel(promises).then(function (result) {
+        logger.debug(result[0]);
         WebServer.render(res, params.libType + "/" + params.itemType + "/" + params.view, utils.mapPromiseResults({
             params : params,
             query : req.query
