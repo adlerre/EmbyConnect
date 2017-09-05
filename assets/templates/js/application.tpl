@@ -18,11 +18,27 @@ atv.config = {
 };
 
 atv.onAppEntry = function() {
-    atv.loadURL("<%=: [serverId] | buildUrl %>");
+    <% if (servers.length === 1) { %>atv.loadURL("<%=: [servers[0].Id] | buildUrl %>");<% } %>
+    <% if (servers.length > 1) { %>atv.loadURL("<%=: [] | buildUrl %>");<% } %>
+    <% if (servers.length === 0) { %>
+    var xmlstr =
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?> \
+<atv> \
+  <body> \
+    <dialog id=\"error-dialog\"> \
+      <title><%= __("error.title") %></title> \
+      <description><%= __("error.noServerFound") %></description> \
+    </dialog> \
+  </body> \
+</atv>";
+        
+    var doc = atv.parseXML(xmlstr);
+    atv.loadXML(doc);
+    <% } %>
 };
 
 atv.onGenerateRequest = function(request) {
-	if (request.url.indexOf("<%=: [serverId] | buildUrl %>") != -1) {
+	if (request.url.indexOf("<%=: [] | buildUrl %>") != -1) {
 		var sep = "&";
 		if (request.url.indexOf("?") == -1 && request.url.indexOf("&") == -1) {
 			sep = "?";

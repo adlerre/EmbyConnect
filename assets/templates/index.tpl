@@ -3,7 +3,7 @@
   <navigation currentIndex="0">
     <navigationItem id="library">
       <title><%= __("library.other") %></title>
-      <url><%=: [serverId, "library"] | buildUrl %></url>
+      <url><%=: (servers.length === 1 ? [servers[0].Id, "library"] : ["library"]) | buildUrl %></url>
     </navigationItem>
     <navigationItem id="settings">
       <title><%= __("label.settings") %></title>
