@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
     <itemDetailWithImageHeader layout="full" id="Movie-Details">
       <styles>
         <color name="titleColor"><%- colors.titleColor %></color>
@@ -202,4 +202,4 @@
         </listScrollerSplit>
       </moreInfo>
     </itemDetailWithImageHeader>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>

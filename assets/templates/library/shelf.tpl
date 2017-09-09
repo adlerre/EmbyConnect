@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
 <scroller id="Library-Shelf">
     <items>
         <shelf id="Library-Shelf-<%- params.serverId %>" columnCount="5">
@@ -63,4 +63,4 @@
         <% latestList("tvshows", 5, "sixteenByNine", "16x9", "Thumb", 240) %>
     </items>
 </scroller>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

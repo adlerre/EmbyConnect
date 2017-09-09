@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
     <itemDetail id="Episode-Details">
       <title><%- item.IndexNumber%>. <%= item.Name %></title>
       <subtitle><%= item.SeriesName %>, <%= __n('season %s', item.ParentIndexNumber)%></subtitle>
@@ -97,4 +97,4 @@
       </bottomShelf>
       <% } %>
     </itemDetail>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>

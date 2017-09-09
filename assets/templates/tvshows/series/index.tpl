@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
     <itemDetail id="Series-Details">
       <title><%= item.Name %></title>
       <subtitle><%=: item.Taglines[0] | extractText %></subtitle>
@@ -135,4 +135,4 @@
         </listScrollerSplit>
       </moreInfo>
     </itemDetail>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>

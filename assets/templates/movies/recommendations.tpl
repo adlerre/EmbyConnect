@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
 <scroller id="movie-shelf-recommendations">
   <items>
     <collectionDivider alignment="left" accessibilityLabel="<%= __('label.resumeWatch') %>">
@@ -45,4 +45,4 @@
     </shelf>
   </items>
 </scroller>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

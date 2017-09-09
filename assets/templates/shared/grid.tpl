@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include header.tpl %>
 <scroller id="Library-Grid">
     <items>
         <grid id="Library-Grid-<%- params.libId %>" columnCount="8">
@@ -17,4 +17,4 @@
         </grid>
     </items>
 </scroller>
-<% include ../footer.tpl %>
+<% include footer.tpl %>

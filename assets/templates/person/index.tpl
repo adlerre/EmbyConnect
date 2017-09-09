@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
     <itemDetail id="Person-Details">
       <title><%= item.Name %></title>
       <summary><%= item.Overview %></summary>
@@ -31,4 +31,4 @@
       </bottomShelf>
       <% } %>
     </itemDetail>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

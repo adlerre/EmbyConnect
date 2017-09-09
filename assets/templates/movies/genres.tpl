@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
     <scroller id="movie-shelf-genres">
       <items>
         <% items.forEach(function(genre, index) { %>
@@ -26,4 +26,4 @@
         <% }) %>
       </items>
     </scroller>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

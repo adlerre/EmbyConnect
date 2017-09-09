@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
 <scroller id="Library-Grid">
      <header>
         <simpleHeader>
@@ -22,4 +22,4 @@
         </grid>
     </items>
 </scroller>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

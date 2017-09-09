@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
     <viewWithNavigationBar id="EmbyConnect_Navigation">
             <navigation currentIndex="0">
                 <navigationItem id="allShows">
@@ -15,4 +15,4 @@
                 </navigationItem>
             </navigation>
         </viewWithNavigationBar>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

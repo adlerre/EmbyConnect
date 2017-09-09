@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
     <preview>
         <scrollerPreview id="Person-moreInfoPreview">
         <header>
@@ -25,4 +25,4 @@
         </items>
       </scrollerPreview>
     </preview>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

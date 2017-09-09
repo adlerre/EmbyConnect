@@ -1,4 +1,4 @@
-<% include header.tpl %>
+<% include shared/header.tpl %>
 <viewWithNavigationBar id="EmbyConnect-Nav" volatile="true">
   <navigation currentIndex="0">
     <navigationItem id="library">
@@ -11,4 +11,4 @@
     </navigationItem>
   </navigation>
 </viewWithNavigationBar>
-<% include footer.tpl %>
+<% include shared/footer.tpl %>

@@ -1,4 +1,4 @@
-<% include ../header.tpl %>
+<% include ../shared/header.tpl %>
     <preview>
         <longDescriptionPreview>
             <title><%= item.Name %></title>
@@ -14,4 +14,4 @@
             </metadata>
         </longDescriptionPreview>
     </preview>
-<% include ../footer.tpl %>
+<% include ../shared/footer.tpl %>

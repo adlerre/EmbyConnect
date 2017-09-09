@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
     <itemDetail id="Collection-Details">
       <title><%= item.Name %> <% if (item.ProductionYear) {%>(<%= item.ProductionYear %>)<% } %></title>
       <subtitle><%=: item.Taglines[0] | extractText %></subtitle>
@@ -35,4 +35,4 @@
       </bottomShelf>
       <% } %>
     </itemDetail>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>

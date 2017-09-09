@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
 <videoPlayer id="Video-Player">
     <httpFileVideoAsset id="<%- item.Id %>">
         <mediaURL><%=: item | streamUrl %></mediaURL>
@@ -7,4 +7,4 @@
         <image><%=: item.Id | imageUrl:'Thumb',384 %></image>
     </httpFileVideoAsset>
 </videoPlayer>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>

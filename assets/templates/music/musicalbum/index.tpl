@@ -1,4 +1,4 @@
-<% include ../../header.tpl %>
+<% include ../../shared/header.tpl %>
     <listWithPreview id="menu-items-with-sections">
       <header>
         <simpleHeader accessibilityLabel="<%= item.Name %>">
@@ -54,4 +54,4 @@
         </sections>
       </menu>
     </listWithPreview>
-<% include ../../footer.tpl %>
+<% include ../../shared/footer.tpl %>
