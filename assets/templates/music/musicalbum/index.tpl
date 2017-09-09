@@ -28,7 +28,7 @@
                     <% if (item.Overview) { %>
                     <summary><%= item.Overview %></summary>
                     <% } else { %>
-                    <summary>&#x00AD;</summary>
+                    <summary/>
                     <% } %>
                     <% if (track.Studios.length !== 0) { %>
                     <footnote>© <%= track.Studios[0] %>, All Rights Reserved.</footnote>
