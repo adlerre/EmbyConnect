@@ -4,7 +4,7 @@
     <collectionDivider alignment="left" accessibilityLabel="<%= __('label.resumeWatch') %>">
       <title><%= __('label.resumeWatch') %></title>
     </collectionDivider>
-    <shelf id="shelf_resumables" columnCount="5">
+    <shelf id="shelf_resumables" columnCount="8">
       <sections>
         <shelfSection>
           <items>
@@ -25,7 +25,7 @@
     <collectionDivider alignment="left" accessibilityLabel="<%= __('label.latest.movies') %>">
       <title><%= __('label.latest.movies') %></title>
     </collectionDivider>
-    <shelf id="shelf_nextUp" columnCount="5">
+    <shelf id="shelf_latest" columnCount="8">
       <sections>
         <shelfSection>
           <items>
