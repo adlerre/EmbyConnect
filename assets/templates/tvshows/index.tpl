@@ -6,8 +6,8 @@
                     <url><%=: [params.serverId, params.libType, params.libId, 'grid'] | buildUrl %></url>
                 </navigationItem>
                 <navigationItem id="newest">
-                    <title><%= __('label.newest') %></title>
-                    <url><%=: [params.serverId, params.libType, params.libId, 'newest'] | buildUrl %></url>
+                    <title><%= __('label.recommendations') %></title>
+                    <url><%=: [params.serverId, params.libType, params.libId, 'recommendations'] | buildUrl %></url>
                 </navigationItem>
                 <navigationItem id="genres">
                     <title><%= __n('label.genres', 2) %></title>

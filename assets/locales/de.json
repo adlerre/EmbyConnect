@@ -14,8 +14,8 @@
 	"%s-today": "%s-Heute",
 	"season %s": "Staffel %d",
 	"format": {
-        "date": "dd.mm.yyyy"
-    },
+		"date": "dd.mm.yyyy"
+	},
 	"label": {
 		"actors": {
 			"one": "Schauspieler",
@@ -57,6 +57,7 @@
 		"otherSeasons": "Andere Staffeln",
 		"special": "Special",
 		"allShows": "Alle Serien",
+		"allMovies": "Alle Filme",
 		"newest": "Neueste",
 		"unwatched": "Ungesehene",
 		"resumeWatch": "Weiterschauen",
@@ -64,7 +65,8 @@
 		"settings": "Einstellungen",
 		"unknown": "Unbekannt",
 		"album": "Album",
-        "artist": "Interpret",
+		"artist": "Interpret",
+		"recommendations": "Empfehlungen",
 		"latest": {
 			"movies": "Neueste Filme",
 			"music": "Neueste Musik",

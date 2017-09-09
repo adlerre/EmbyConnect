@@ -57,6 +57,7 @@
 		"otherSeasons": "Other Seasons",
 		"special": "Special",
 		"allShows": "All Shows",
+		"allMovies": "All Movies",
 		"newest": "Newest",
 		"unwatched": "Unwatched",
 		"resumeWatch": "Resume Watch",
@@ -65,6 +66,7 @@
 		"unknown": "Unknown",
 		"album": "Album",
 		"artist": "Artist",
+		"recommendations": "Recommendations",
 		"latest": {
 			"movies": "Newest Movies",
 			"music": "Newest Music",
