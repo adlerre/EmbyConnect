@@ -25,7 +25,11 @@
                   <keyedPreview>
                     <title><%= track.Name %></title>
                     <image><%=: track.ParentId | imageUrl:'Primary',800 %></image>
+                    <% if (item.Overview) { %>
+                    <summary><%= item.Overview %></summary>
+                    <% } else { %>
                     <summary>&#x00AD;</summary>
+                    <% } %>
                     <% if (track.Studios.length !== 0) { %>
                     <footnote>© <%= track.Studios[0] %>, All Rights Reserved.</footnote>
                     <% } %>
