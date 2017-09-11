@@ -10,8 +10,8 @@
           <items>
             <% resumable.forEach(function(item, index) { %>
             <sixteenByNinePoster id="shelf_resume_item_<%- index %>" accessibilityLabel="<%= item.Name %>" showOutline="true" alwaysShowTitles="true"
-                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
+                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');" 
+                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');">
               <title><%=: item | title %></title>
               <subtitle><%=: item | subtitle %></subtitle>
               <image><%=: item.ParentThumbItemId | imageUrl:'Thumb',240 %></image>
@@ -31,8 +31,8 @@
           <items>
             <% next.forEach(function(item, index) { %>
             <sixteenByNinePoster id="shelf_next_item_<%- index %>" accessibilityLabel="<%= item.Name %>" showOutline="true" alwaysShowTitles="true"
-                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
+                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');" 
+                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');">
               <title><%=: item | title %></title>
               <subtitle><%=: item | subtitle %></subtitle>
               <image><%=: item.ParentThumbItemId | imageUrl:'Thumb',240 %></image>
