@@ -93,5 +93,14 @@
 			"one": "Zusammenstellung",
 			"other": "Zusammenstellungen"
 		}
+	},
+	"settings": {
+		"title": "Einstellungen",
+		"server": "Server",
+		"user": "Benutzer",
+		"version": "Version",
+		"author": "Autor",
+		"homepage": "Homepage",
+		"passwordFor": "Passwort für"
 	}
 }

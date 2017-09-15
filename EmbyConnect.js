@@ -2,7 +2,9 @@
 var program = require("commander");
 var Application = require(__dirname + "/lib/application");
 
-program.version(Application.getVersion());
+var app = new Application();
+
+program.version(app.getVersion());
 program.description("inits EmbyConnect with given options or use defaults");
 program.usage("[options]");
 program.option("--host [hostname]", "hostname to mount the hack", "trailers.apple.com");
@@ -12,5 +14,4 @@ program.option("-p, --pass [password]", "password for Emby login");
 program.option("--skipSSL", "skip https server start", false);
 program.parse(process.argv);
 
-var app = new Application(program);
-app.run();
+app.run(program);

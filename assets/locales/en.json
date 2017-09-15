@@ -93,5 +93,14 @@
 			"one": "Collection",
 			"other": "Collections"
 		}
+	},
+	"settings": {
+		"title": "Settings",
+		"server": "Server",
+		"user": "User",
+		"version": "Version",
+		"author": "Author",
+		"homepage": "Homepage",
+		"passwortFor": "Password for"
 	}
 }
