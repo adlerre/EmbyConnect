@@ -1,10 +1,4 @@
-<atv>
-    <head>
-      <script src="<%=: ['js/logger.js'] | buildUrl %>" />
-      <script src="<%=: ['js/utils.js'] | buildUrl %>" />
-      <script src="<%=: ['js/navbar.js'] | buildUrl %>" />
-    </head>
-    <body>
+<% include shared/header-navbar.tpl %>
         <viewWithNavigationBar id="EmbyConnect-Nav" volatile="true"
             onNavigate="loadMenuPage(event)" onVolatileReload="reloadNavbar(event)">
           <navigation currentIndex="0">
