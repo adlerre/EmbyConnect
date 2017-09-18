@@ -102,5 +102,9 @@
 		"author": "Autor",
 		"homepage": "Homepage",
 		"passwordFor": "Passwort für"
+	},
+	"popup": {
+		"markWatched": "Als gesehen markieren",
+		"markUnwatched": "Als ungesehen markieren"
 	}
 }

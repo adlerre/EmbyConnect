@@ -1,6 +1,6 @@
 var atvutils = ATVUtils = {
 
-    fetch : function (options, callback) {
+    fetch : function (options, callback, errorCallback) {
         if (typeof (options) === "string") {
             var url = options;
             options = {
@@ -30,12 +30,20 @@ var atvutils = ATVUtils = {
                         }
                     } else {
                         logger.error("received HTTP status " + xhr.status + " for " + options.url);
+                        if (typeof (errorCallback) === "function") {
+                            errorCallback(xhr);
+                            return;
+                        }
                         callback(null);
                     }
                 }
             } catch (e) {
                 logger.error("caught exception while processing request for " + options.url + ". Aborting. Exception: " + e, "error");
                 xhr.abort();
+                if (typeof (errorCallback) === "function") {
+                    errorCallback(xhr, e);
+                    return;
+                }
                 callback(null);
             }
         }
@@ -47,6 +55,31 @@ var atvutils = ATVUtils = {
 
         xhr.send();
         return xhr;
+    },
+
+    dump : function (obj, maxLevel) {
+        maxLevel = maxLevel || 5;
+
+        function d(obj, level) {
+            level = level || 0;
+            var output = "";
+
+            var ident = "";
+            for (var i = 0; i < level; i++) {
+                ident += "  ";
+            }
+
+            for ( var property in obj) {
+                if (level < maxLevel && typeof (obj[property]) === "object") {
+                    output += ident + property + " {\n" + d(obj[property], level + 1) + " }\n";
+                } else {
+                    output += ident + property + ": " + obj[property] + ";\n";
+                }
+            }
+            return output;
+        }
+
+        return d(obj, 0);
     },
 
     showTextEntryPage : function (inputType, inputTitle, inputInstructions, callbackSubmit, callbackCancel, defaultValue) {
@@ -90,7 +123,55 @@ var atvutils = ATVUtils = {
         }
     },
 
+    popUpMenu : function (url) {
+        var urlParts = url.split("?");
+        fv = atv.device.softwareVersion.split(".");
+        firmVer = fv[0] + "." + fv[1];
+        if (parseFloat(firmVer) < 6.0) {
+            url = urlParts[0] + "/options-dialog" + (urlParts[1] || "");
+            logger.debug("use options dialog - " + url);
+            atv.loadURL(url);
+        } else {
+            url = urlParts[0] + "/popup" + (urlParts[1] || "");
+            logger.debug("use popup - " + url);
+            atvutils.fetch({
+                url : unescape(url),
+                responseType : "xml"
+            }, function (xmlDoc) {
+                atv.contextMenu.load(xmlDoc);
+            });
+        }
+    }
 };
+
+var emby = {
+    url : '<%=: [] | buildUrl %>',
+
+    markWatched : function (serverId, libType, libId, itemType, itemId) {
+        logger.debug("mark " + itemId + " as watched");
+
+        var url = emby.url + [ serverId, libType, libId, itemType, itemId, "markWatched" ].join("/");
+        atvutils.fetch({
+            url : url
+        }, function (result) {
+            logger.debug(result);
+            atv.contextMenu.cancel();
+        });
+    },
+
+    markUnwatched : function (serverId, libType, libId, itemType, itemId) {
+        logger.debug("mark " + itemId + " as unwatched");
+
+        var url = emby.url + [ serverId, libType, libId, itemType, itemId, "markUnwatched" ].join("/");
+        atvutils.fetch({
+            url : url
+        }, function (result) {
+            logger.debug(result);
+            atv.contextMenu.cancel();
+        });
+    }
+
+}
 
 /**
  * Polyfills

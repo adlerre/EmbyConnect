@@ -6,7 +6,8 @@
             <% items.forEach(function(item, index) { %>
                 <<%=: item | posterType %> id="item_<%- index %>" showOutline="false" alwaysShowTitles="true"
                     onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');"
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
+                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');"
+                    onHoldSelect="atvutils.popUpMenu('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>')">
                     <title><%= item.Name %></title>
                     <subtitle>&#x00AD;</subtitle>
                     <image><%=: item.Id | imageUrl:'Primary',384 %></image>
