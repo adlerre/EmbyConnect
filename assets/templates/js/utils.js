@@ -57,6 +57,28 @@ var atvutils = ATVUtils = {
         return xhr;
     },
 
+    loadURL : function (url) {
+        atvutils.fetch({
+            url : unescape(url),
+            responseType : "xml"
+        }, function (xmlDoc) {
+            atv.loadXML(xmlDoc);
+        }, function (xhr, e) {
+            if (xhr.status === 401) {
+                var serverId = atv.localStorage.getItem("emby-serverId");
+                var user = atv.localStorage.getItem("emby-userName");
+                var password = atv.localStorage.getItem("emby-password");
+
+                if (serverId && user) {
+                    logger.debug("Authenticate on server \"" + serverId + "\" with user \"" + user + "\"");
+                    atv.loadURL(url + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || ""));
+                } else {
+                    atv.loadURL("<%=: ['settings'] | buildUrl %>");
+                }
+            }
+        });
+    },
+
     dump : function (obj, maxLevel) {
         maxLevel = maxLevel || 5;
 

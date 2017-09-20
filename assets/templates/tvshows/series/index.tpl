@@ -58,8 +58,8 @@
               <items>
                 <% items.forEach(function(season, index) { %>
                 <moviePoster id="shelf_season_<%- index %>" alwaysShowTitles="true" accessibilityLabel="<%= season.IndexNumber === 0 ? __('label.special') : __n('season %s', season.IndexNumber) %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, season.Type.toLowerCase(), season.Id] | buildUrl:{seriesId: item.Id} %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, season.Type.toLowerCase(), season.Id] | buildUrl:{seriesId: item.Id} %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, season.Type.toLowerCase(), season.Id] | buildUrl:{seriesId: item.Id} %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, season.Type.toLowerCase(), season.Id] | buildUrl:{seriesId: item.Id} %>');">
                   <title><%= season.IndexNumber === 0 ? __('label.special') : __n('season %s', season.IndexNumber) %></title>
                   <image><%=: season.Id | imageUrl:'Primary',384 %></image>
                   <defaultImage>resource://Poster.png</defaultImage>

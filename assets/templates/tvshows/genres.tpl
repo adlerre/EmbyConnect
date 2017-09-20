@@ -11,8 +11,8 @@
               <items>
                 <% genre.Items.forEach(function(item, index) { %>
                 <squarePoster id="shelf_item_<%- index %>" accessibilityLabel="<%= item.Name %>" showOutline="false" alwaysShowTitles="true"
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
                   <title><%= item.Name %></title>
                   <subtitle>&#x00AD;</subtitle>
                   <image><%=: item.Id | imageUrl:'Primary',384 %></image>

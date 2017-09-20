@@ -12,8 +12,8 @@
             <items>
                 <% relatedItems.forEach(function(item, index) { %>
                 <moviePoster id="item_<%- index %>" accessibilityLabel="<%= item.Name %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
                   <title><%=: item | title %></title>
                   <subtitle><%=: item | subtitle %></subtitle>
                   <image><%=: item.Id | imageUrl:'Primary' %></image>

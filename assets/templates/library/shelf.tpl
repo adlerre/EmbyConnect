@@ -7,8 +7,8 @@
                     <items>
                     <% items.forEach(function(item, index){ %>
                         <sixteenByNinePoster id="<%- index %>" showOutline="false" alwaysShowTitles="true"
-                            onSelect="atv.loadURL('<%=: [params.serverId, item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');"
-                            onPlay="atv.loadURL('<%=: [params.serverId, item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');">
+                            onSelect="atvutils.loadURL('<%=: [params.serverId, item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');"
+                            onPlay="atvutils.loadURL('<%=: [params.serverId, item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');">
                             <title><%= item.Name %></title>
                             <subtitle>&#x00AD;</subtitle>
                             <image><%=: item.Id | imageUrl:'Primary',384 %></image>
@@ -40,8 +40,8 @@
                     <items>
                     <% filtered[0].latestItems.forEach(function(item, index) {%>
                         <<%- posterType %>Poster id="latests-<%- item.Type + '_' + index %>" showOutline="false" alwaysShowTitles="true"
-                            onSelect="atv.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');"
-                            onPlay="atv.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
+                            onSelect="atvutils.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');"
+                            onPlay="atvutils.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
                             <title><%=: item | title %></title>
                             <subtitle><%=: item | subtitle %></subtitle>
                             <% if (item.Type === 'Episode') { %>

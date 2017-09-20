@@ -10,8 +10,8 @@
             <items>
             <% items.forEach(function(item, index){ %>
                 <moviePoster id="<%- index %>" accessibilityLabel="<%= item.Name %>" 
-                    onSelect="atv.loadURL('<%=: ['library', item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');"
-                    onPlay="atv.loadURL('<%=: ['library', item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: ['library', item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');"
+                    onPlay="atvutils.loadURL('<%=: ['library', item.CollectionType.toLowerCase(), item.Id] | buildUrl %>');">
                     <title><%= item.Name %></title>
                     <subtitle>&#x00AD;</subtitle>
                     <image><%=: item.Id | imageUrl:'Primary',384 %></image>

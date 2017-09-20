@@ -21,8 +21,8 @@
               <items>
                 <% items.forEach(function(item, index) { %>
                 <moviePoster id="shelf_item_<%- index %>" accessibilityLabel="<%= item.Name %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, 'movies', params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, 'movies', params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, 'movies', params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, 'movies', params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
                   <title><%= item.Name %></title>
                   <image><%=: item.Id | imageUrl:'Primary',384 %></image>
                   <defaultImage>resource://Poster.png</defaultImage>

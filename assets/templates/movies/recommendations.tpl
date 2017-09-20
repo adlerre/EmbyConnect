@@ -10,8 +10,8 @@
           <items>
             <% resumable.forEach(function(item, index) { %>
             <moviePoster id="shelf_resume_item_<%- index %>" accessibilityLabel="<%= item.Name %>" showOutline="true" alwaysShowTitles="true"
-                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
+                onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
+                onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');">
               <title><%=: item | title %></title>
               <subtitle><%=: item | subtitle %></subtitle>
               <image><%=: item.Id | imageUrl:'Primary',240 %></image>
@@ -31,8 +31,8 @@
           <items>
             <% latest.forEach(function(item, index) { %>
             <moviePoster id="shelf_next_item_<%- index %>" accessibilityLabel="<%= item.Name %>" showOutline="true" alwaysShowTitles="true"
-                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
-                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
+                onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id] | buildUrl %>');" 
+                onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
               <title><%=: item | title %></title>
               <subtitle><%=: item | subtitle %></subtitle>
               <image><%=: item.Id | imageUrl:'Primary',240 %></image>

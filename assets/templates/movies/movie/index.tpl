@@ -89,7 +89,7 @@
               </stash>
               <items>
                 <actionButton id="play" accessibilityLabel="<%= __('label.play') %>" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id, "play"] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id, "play"] | buildUrl %>');">
                   <title><%= __("label.play") %></title>
                   <image>resource://Play.png</image>
                   <focusedImage>resource://PlayFocused.png</focusedImage>
@@ -119,8 +119,8 @@
               <items>
                 <% items.forEach(function(item, index) { %>
                 <moviePoster id="shelf_item_<%- index %>" accessibilityLabel="<%= item.Name %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, params.itemType, item.Id] | buildUrl %>');">
                   <title><%= item.Name %></title>
                   <image><%=: item.Id | imageUrl:'Primary',384 %></image>
                   <defaultImage>resource://Poster.png</defaultImage>

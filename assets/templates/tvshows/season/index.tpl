@@ -11,7 +11,7 @@
           <menuSection>
             <items>
               <!--
-              <oneLineMenuItem id="seasons" accessibilityLabel="<%= __('label.otherSeasons') %>" onSelect="atv.loadURL('<%=: ['series', item.ParentId] | buildUrl %>');">
+              <oneLineMenuItem id="seasons" accessibilityLabel="<%= __('label.otherSeasons') %>" onSelect="atvutils.loadURL('<%=: ['series', item.ParentId] | buildUrl %>');">
                 <label><%= __('label.otherSeasons') %></label>
                 <accessories>
                   <arrow/>
@@ -26,8 +26,8 @@
               
               <% items.forEach(function(episode, index) { %>
               <twoLineEnhancedMenuItem id="episode_<%- index %>" 
-                onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');" 
-                onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id, "play"] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');">
+                onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');" 
+                onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id, "play"] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');">
                 <label><%= episode.Name %></label>
                 <rightLabel><%=: episode.PremiereDate | formatDate %></rightLabel>
                 <ordinal><%- episode.IndexNumber %></ordinal>

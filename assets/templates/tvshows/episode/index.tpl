@@ -58,7 +58,7 @@
               </stash>
               <items>
                 <actionButton id="play" accessibilityLabel="<%= __('label.play') %>" 
-                  onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, "play"] | buildUrl %>');">
+                  onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type.toLowerCase(), item.Id, "play"] | buildUrl %>');">
                   <title><%= __("label.play") %></title>
                   <image>resource://Play.png</image>
                   <focusedImage>resource://PlayFocused.png</focusedImage>
@@ -83,8 +83,8 @@
               <items>
                 <% items.forEach(function(episode, index) { %>
                 <sixteenByNinePoster id="shelf_epsiode_<%- index %>" alwaysShowTitles="true" accessibilityLabel="<%= episode.Name %>" related="true" 
-                    onSelect="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');" 
-                    onPlay="atv.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id, "play"] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');">
+                    onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');" 
+                    onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, episode.Type.toLowerCase(), episode.Id, "play"] | buildUrl:{seriesId: item.SeriesId, seasonId: item.Id} %>');">
                   <title><%= episode.Name %></title>
                   <image><%=: episode.Id | imageUrl:'Primary',384 %></image>
                   <defaultImage>resource://16x9.png</defaultImage>
