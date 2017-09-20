@@ -2,7 +2,7 @@
     <itemDetail id="Episode-Details">
       <title><%- item.IndexNumber%>. <%= item.Name %></title>
       <subtitle><%= item.SeriesName %>, <%= __n('season %s', item.ParentIndexNumber)%></subtitle>
-      <rightImage required="true"><%=: item.ParentLogoItemId | imageUrl:'Logo',40 %></rightImage>
+      <rightImage required="false"><%=: item.ParentLogoItemId | imageUrl:'Logo',40 %></rightImage>
       <rating><%=: item.OfficialRating | extractText %></rating>
       <summary><%= item.Overview %></summary>
       <image style="moviePoster"><%=: item.ParentId | imageUrl:'Primary',768 %></image>

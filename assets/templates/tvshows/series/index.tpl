@@ -2,7 +2,7 @@
     <itemDetail id="Series-Details">
       <title><%= item.Name %></title>
       <subtitle><%=: item.Taglines[0] | extractText %></subtitle>
-      <rightImage required="true"><%=: item.Id | imageUrl:'Logo',40 %></rightImage>
+      <rightImage required="false"><%=: item.Id | imageUrl:'Logo',40 %></rightImage>
       <rating><%=: item.OfficialRating | extractText %></rating>
       <summary><%= item.Overview %></summary>
       <image style="moviePoster"><%=: item.Id | imageUrl:'Primary',768 %></image>
