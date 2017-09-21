@@ -57,12 +57,23 @@ var atvutils = ATVUtils = {
         return xhr;
     },
 
-    loadURL : function (url) {
-        atvutils.fetch({
-            url : unescape(url),
-            responseType : "xml"
-        }, function (xmlDoc) {
-            atv.loadXML(xmlDoc);
+    loadURLInternal : function (options, loader) {
+        var that = this, xhr, proxy = new atv.ProxyDocument;
+
+        proxy.show();
+
+        proxy.onCancel = function () {
+            if (xhr) {
+                xhr.abort();
+            }
+        };
+
+        xhr = that.fetch(options, function (xml) {
+            try {
+                loader(proxy, xml);
+            } catch (e) {
+                logger.error("Caught exception while loading " + url + ". " + e);
+            }
         }, function (xhr, e) {
             if (xhr.status === 401) {
                 var serverId = atv.localStorage.getItem("emby-serverId");
@@ -71,10 +82,27 @@ var atvutils = ATVUtils = {
 
                 if (serverId && user) {
                     logger.debug("Authenticate on server \"" + serverId + "\" with user \"" + user + "\"");
-                    atv.loadURL(url + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || ""));
+                    atv.loadURL(options.url + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || ""));
                 } else {
                     atv.loadURL("<%=: ['settings'] | buildUrl %>");
                 }
+            }
+        });
+    },
+
+    loadURL : function (url) {
+        this.loadURLInternal({
+            url : unescape(url),
+            responseType : "xml"
+        }, function (proxy, xml) {
+            try {
+                proxy.loadXML(xml, function (success) {
+                    if (!success) {
+                        logger.error("loadURL failed to load " + url);
+                    }
+                });
+            } catch (e) {
+                logger.error("Caught exception while loading " + url + ". " + e);
             }
         });
     },
@@ -156,7 +184,7 @@ var atvutils = ATVUtils = {
         } else {
             url = urlParts[0] + "/popup" + (urlParts[1] || "");
             logger.debug("use popup - " + url);
-            atvutils.fetch({
+            this.fetch({
                 url : unescape(url),
                 responseType : "xml"
             }, function (xmlDoc) {
