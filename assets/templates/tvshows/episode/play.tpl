@@ -4,7 +4,7 @@
         <mediaURL><%=: item | streamUrl %></mediaURL>
         <title><%= item.Name %></title>
         <description><%= item.Overview %></description>
-        <image><%=: item.Id | imageUrl:'Thumb',384 %></image>
+        <image><%=: item.Id | imageUrl:'Primary',384 %></image>
     </httpFileVideoAsset>
 </videoPlayer>
 <% include ../../shared/footer.tpl %>
