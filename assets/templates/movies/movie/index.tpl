@@ -151,7 +151,7 @@
                   <oneLineMenuItem id="genre_<%- index %>" accessibilityLabel="<%: g.Name %>">
                     <label><%= g.Name %></label>
                     <preview>
-                      <link><%=: ["genre", g.Id, "preview"] | buildUrl %></link>
+                      <link><%=: [params.serverId, params.libType, params.libId, "genre", g.Id, "preview"] | buildUrl:{"includeItemTypes" : params.itemType} %></link>
                     </preview>
                   </oneLineMenuItem>
                   <% }) %>
