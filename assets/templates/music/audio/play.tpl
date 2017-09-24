@@ -5,7 +5,7 @@
     <title><%= item.Name %></title>
     <artist><%= item.AlbumArtist %></artist>
     <collection><%= item.Album %></collection>
-    <image><%=: item.ParentId | imageUrl:'Primary',384 %></image>
+    <image><%=: item.AlbumId | imageUrl:'Primary',800 %></image>
     <% if (item.UserData.PlaybackPositionTicks > 0) { %>
     <bookmarkTime><%- item.UserData.PlaybackPositionTicks / 10000000 %></bookmarkTime>
     <% } %>
