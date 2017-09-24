@@ -41,7 +41,7 @@
                     <% filtered[0].latestItems.forEach(function(item, index) {%>
                         <<%- posterType %>Poster id="latests-<%- item.Type + '_' + index %>" showOutline="false" alwaysShowTitles="true"
                             onSelect="atvutils.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id] | buildUrl:{seriesId: item.SeriesId, seasonId: item.ParentId} %>');"
-                            onPlay="atvutils.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl %>');">
+                            onPlay="atvutils.loadURL('<%=: [params.serverId, type, filtered[0].Id, item.Type.toLowerCase(), item.Id, 'play'] | buildUrl:{index: 0} %>');">
                             <title><%=: item | title %></title>
                             <subtitle><%=: item | subtitle %></subtitle>
                             <% if (item.Type === 'Episode') { %>
