@@ -4,7 +4,7 @@
       <subtitle><%=: item.Taglines[0] | extractText %></subtitle>
       <rightImage required="false"><%=: item.Id | imageUrl:'Logo',40 %></rightImage>
       <rating><%=: item.OfficialRating | extractText %></rating>
-      <summary><%= item.Overview %></summary>
+      <summary><%= item.Overview || "" %></summary>
       <image style="moviePoster"><%=: item.Id | imageUrl:'Primary',768 %></image>
       <defaultImage>resource://Poster.png</defaultImage>
       <% if (item.Studios.length > 0) { %>
@@ -133,6 +133,7 @@
       </bottomShelf>
       <% } %>
       
+      <% if (item.GenreItems.length !== 0 || item.People.length !== 0) { %>
       <moreInfo>
         <listScrollerSplit id="com.sample.list-scroller-split">
           <menu>
@@ -195,5 +196,6 @@
           </menu>
         </listScrollerSplit>
       </moreInfo>
+      <% } %>
     </itemDetail>
 <% include ../../shared/footer.tpl %>
