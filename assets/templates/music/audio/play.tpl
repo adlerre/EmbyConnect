@@ -6,6 +6,14 @@
     <artist><%= item.AlbumArtist %></artist>
     <collection><%= item.Album %></collection>
     <image><%=: item.ParentId | imageUrl:'Primary',384 %></image>
+    <% if (item.UserData.PlaybackPositionTicks > 0) { %>
+    <bookmarkTime><%- item.UserData.PlaybackPositionTicks / 10000000 %></bookmarkTime>
+    <% } %>
+        
+    <metadata>
+        <serverId><%- params.serverId %></serverId>
+        <mediaSourceId><%- item.Id %></mediaSourceId>
+    </metadata>
   </httpFileAudioAsset>
 </audioPlayer>
 <% include ../../shared/footer.tpl %>
