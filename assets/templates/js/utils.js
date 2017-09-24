@@ -251,6 +251,14 @@ if (atv.Element) {
         }
         return undefined;
     }
+
+    atv.Element.prototype.getTextContent = function (tagName) {
+        var element = this.getElementByTagName(tagName);
+        if (element && element.textContent)
+            return element.textContent;
+        else
+            return "";
+    }
 }
 
 /**

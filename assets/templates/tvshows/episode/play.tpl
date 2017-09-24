@@ -5,6 +5,15 @@
         <title><%= item.Name %></title>
         <description><%= item.Overview %></description>
         <image><%=: item.Id | imageUrl:'Primary',384 %></image>
+        <% if (item.UserData.PlaybackPositionTicks > 0) { %>
+        <bookmarkTime><%- item.UserData.PlaybackPositionTicks / 10000000 %></bookmarkTime>
+        <% } %>
+        
+        <metadata>
+            <serverId><%- params.serverId %></serverId>
+            <seriesId><%- item.SeriesId %></seriesId>
+            <mediaSourceId><%- item.Id %></mediaSourceId>
+        </metadata>
     </httpFileVideoAsset>
 </videoPlayer>
 <% include ../../shared/footer.tpl %>

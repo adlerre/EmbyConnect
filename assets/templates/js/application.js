@@ -10,6 +10,160 @@ function log(msg, level) {
 };
 
 /**
+ * Polyfills
+ */
+
+// atv.Document extensions
+if (atv.Document) {
+    atv.Document.prototype.getElementById = function (id) {
+        var elements = this.evaluateXPath("//*[@id='" + id + "']", this);
+        if (elements && elements.length > 0) {
+            return elements[0];
+        }
+        return undefined;
+    }
+}
+
+// atv.Element extensions
+if (atv.Element) {
+    atv.Element.prototype.getElementsByTagName = function (tagName) {
+        return this.ownerDocument.evaluateXPath("descendant::" + tagName, this);
+    }
+
+    atv.Element.prototype.getElementByTagName = function (tagName) {
+        var elements = this.getElementsByTagName(tagName);
+        if (elements && elements.length > 0) {
+            return elements[0];
+        }
+        return undefined;
+    }
+
+    atv.Element.prototype.getTextContent = function (tagName) {
+        var element = this.getElementByTagName(tagName);
+        if (element && element.textContent)
+            return element.textContent;
+        else
+            return '';
+    }
+}
+
+/**
+ * Player Helper
+ */
+
+var player = {
+    baseURL : "<%=: ['player'] | buildUrl %>",
+
+    metadata : function (forceReload) {
+        if (!this._metadata || forceReload === true) {
+            var metadata = atv.player.asset.getElementByTagName("metadata");
+            if (metadata != null) {
+                this._metadata = {
+                    serverId : metadata.getTextContent("serverId"),
+                    seriesId : metadata.getTextContent("seriesId"),
+                    mediaSourceId : metadata.getTextContent("mediaSourceId")
+                }
+            }
+        }
+
+        return this._metadata;
+    },
+
+    positionTicks : function (timeIntervalSec) {
+        if (timeIntervalSec) {
+            this._positionTicks = parseInt(timeIntervalSec * 10000000) || 0;
+        }
+
+        return this._positionTicks || 0;
+    },
+
+    playingStart : function () {
+        var metadata = this.metadata();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.baseURL, false);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(JSON.stringify({
+            state : "start",
+            serverId : metadata.serverId,
+            seriesId : metadata.seriesId,
+            mediaSourceId : metadata.mediaSourceId
+        }));
+    },
+
+    playingStopped : function () {
+        var metadata = this.metadata();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.baseURL, false);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(JSON.stringify({
+            state : "stopped",
+            serverId : metadata.serverId,
+            seriesId : metadata.seriesId,
+            mediaSourceId : metadata.mediaSourceId,
+            positionTicks : this.positionTicks()
+        }));
+    },
+
+    playingPaused : function () {
+        var metadata = this.metadata();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.baseURL, false);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(JSON.stringify({
+            state : "paused",
+            serverId : metadata.serverId,
+            seriesId : metadata.seriesId,
+            mediaSourceId : metadata.mediaSourceId,
+            positionTicks : this.positionTicks()
+        }));
+    },
+
+    playingProgress : function () {
+        var metadata = this.metadata();
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", this.baseURL, false);
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.send(JSON.stringify({
+            state : "progress",
+            serverId : metadata.serverId,
+            seriesId : metadata.seriesId,
+            mediaSourceId : metadata.mediaSourceId,
+            positionTicks : this.positionTicks()
+        }));
+    }
+};
+
+/**
+ * Player Events
+ */
+atv.player.playerStateChanged = function (newState, timeIntervalSec) {
+    if (newState.toLowerCase() === "loading") {
+        player.metadata(true);
+        player.positionTicks(0);
+    } else if (newState.toLowerCase() === "stopped") {
+        player.playingStopped();
+        player.positionTicks(0);
+    } else if (newState.toLowerCase() === "playing") {
+        player.playingStart();
+    } else if (newState.toLowerCase() === "paused") {
+        player.positionTicks(timeIntervalSec);
+        player.playingPaused();
+    }
+}
+
+atv.player.playerTimeDidChange = function (timeIntervalSec) {
+    if (timeIntervalSec * 10000000 < player.positionTicks() + 100000000)
+        return;
+
+    player.positionTicks(timeIntervalSec);
+    player.playingProgress();
+}
+
+/**
  * Main App
  */
 atv.config = {
