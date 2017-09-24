@@ -1,31 +1,31 @@
 {
-  "name": "EmbyConnect",
-  "description": "Connects a Apple TV 3 to Emby Media-Server",
-  "version": "0.0.1",
-  "author": "René (Eagle) Adler",
-  "license": "MIT",
-  "main": "EmbyConnect.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/adlerre/EmbyConnect.git"
-  },
-  "engines": {
-    "node": ">=0.6"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "chalk": "^2.1.0",
-    "commander": "^2.11.0",
-    "dateformat": "^2.0.0",
-    "ejs": "^1.0.0",
-    "emby-apiclient": "git://github.com/adlerre/Emby.ApiClient.Javascript.git#master",
-    "express": "^4.15.4",
-    "get-image-colors": "^1.8.1",
-    "http-proxy": "^1.16.2",
-    "i18n": "^0.8.3",
-    "langs": "^2.0.0",
-    "mime-types": "^2.1.16",
-    "node-forge": "^0.6.33",
-    "selfsigned": "^1.10.1"
-  }
+	"name": "EmbyConnect",
+	"description": "Connects a Apple TV 3 to Emby Media-Server",
+	"version": "0.0.1",
+	"author": "René (Eagle) Adler",
+	"license": "MIT",
+	"main": "EmbyConnect.js",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/adlerre/EmbyConnect.git"
+	},
+	"engines": {
+		"node": ">=0.6"
+	},
+	"dependencies": {
+		"body-parser": "^1.18.2",
+		"chalk": "^2.1.0",
+		"commander": "^2.11.0",
+		"dateformat": "^2.0.0",
+		"ejs": "^1.0.0",
+		"emby-apiclient": "git://github.com/adlerre/Emby.ApiClient.Javascript.git#master",
+		"express": "^4.15.4",
+		"http-proxy": "^1.16.2",
+		"i18n": "^0.8.3",
+		"langs": "^2.0.0",
+		"mime-types": "^2.1.16",
+		"node-forge": "^0.6.33",
+		"node-vibrant": "^3.0.0-alpha.2",
+		"selfsigned": "^1.10.1"
+	}
 }
