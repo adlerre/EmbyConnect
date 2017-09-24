@@ -11,7 +11,7 @@
             <items>
               <% items.forEach(function(track, index) { %>
               <oneLineMenuItem id="track_<%- index %>" 
-                onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, track.Type.toLowerCase(), track.Id, "play"] | buildUrl %>');" 
+                onSelect="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, item.Type, item.Id, "play"] | buildUrl:{index: index} %>');" 
                 onPlay="atvutils.loadURL('<%=: [params.serverId, params.libType, params.libId, track.Type.toLowerCase(), track.Id, "play"] | buildUrl %>');">
                 <label><%= track.Name %></label>
                 <rightLabel><%=: track.RunTimeTicks | convertTicksToTime %></rightLabel>
