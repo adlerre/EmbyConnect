@@ -38,7 +38,7 @@ var atvutils = ATVUtils = {
                     }
                 }
             } catch (e) {
-                logger.error("caught exception while processing request for " + options.url + ". Aborting. Exception: " + e, "error");
+                logger.error("caught exception while processing request for " + options.url + ". Aborting. Exception: " + e);
                 xhr.abort();
                 if (typeof (errorCallback) === "function") {
                     errorCallback(xhr, e);
@@ -53,7 +53,11 @@ var atvutils = ATVUtils = {
             xhr.setRequestHeader(key, options.headers[key]);
         }
 
-        xhr.send();
+        if (options.body) {
+            xhr.send(options.body);
+        } else {
+            xhr.send();
+        }
         return xhr;
     },
 
