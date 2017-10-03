@@ -19,14 +19,19 @@ var atvutils = ATVUtils = {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             try {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
                         if ("plain" === options.responseType) {
                             callback(xhr.responseText);
                         } else if ("json" === options.responseType) {
                             callback(JSON.parse(xhr.responseText));
                         } else if ("xml" === options.responseType) {
-                            callback(xhr.responseXML);
+                            try {
+                                callback(xhr.responseXML);
+                            } catch (e) {
+                                logger.error("caught exception while processing request for " + options.url + ". Aborting. Exception: " + e);
+                                callback(xhr.responseText);
+                            }
                         }
                     } else {
                         logger.error("received HTTP status " + xhr.status + " for " + options.url);
@@ -61,6 +66,18 @@ var atvutils = ATVUtils = {
         return xhr;
     },
 
+    redirectURL : function (xhr) {
+        var url = "<%=: [] | buildUrl %>";
+        if (xhr && (xhr.status === 301 || xhr.status === 302)) {
+            if (xhr.responseText.indexOf("http") === 0) {
+                url = xhr.responseText;
+            } else {
+                url += xhr.responseText.indexOf("/") === 0 ? xhr.responseText.substring(1) : xhr.responseText;
+            }
+        }
+        return url;
+    },
+
     loadURLInternal : function (options, loader) {
         var that = this, xhr, proxy = new atv.ProxyDocument;
 
@@ -80,15 +97,32 @@ var atvutils = ATVUtils = {
             }
         }, function (xhr, e) {
             if (xhr.status === 401) {
+                var url = "<%=: [] | buildUrl %>";
                 var serverId = atv.localStorage.getItem("emby-serverId");
                 var user = atv.localStorage.getItem("emby-userName");
                 var password = atv.localStorage.getItem("emby-password");
 
                 if (serverId && user) {
                     logger.debug("Authenticate on server \"" + serverId + "\" with user \"" + user + "\"");
-                    atv.loadURL(options.url + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || ""));
+                    atvutils.fetch({
+                        url : url + "login",
+                        method : "POST",
+                        headers : {
+                            "content-type" : "application/json"
+                        },
+                        body : JSON.stringify({
+                            serverId : serverId,
+                            user : user,
+                            password : password || "",
+                            redirectURL : options.url
+                        })
+                    }, function (response) {
+                        atv.loadURL(url + serverId);
+                    }, function (xhr) {
+                        atv.loadURL(atvutils.redirectURL(xhr));
+                    });
                 } else {
-                    atv.loadURL("<%=: ['settings'] | buildUrl %>");
+                    atv.loadURL(url + "settings");
                 }
             }
         });

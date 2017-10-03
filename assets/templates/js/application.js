@@ -9,6 +9,68 @@ function log(msg, level) {
     req.send();
 };
 
+function fetch(options, callback, errorCallback) {
+    if (typeof (options) === "string") {
+        var url = options;
+        options = {
+            url : url
+        };
+    }
+
+    if (!options.url) {
+        throw "loadURL requires a url argument";
+    }
+
+    options.method = options.method || "GET";
+    options.headers = options.headers || {}
+    options.responseType = options.responseType || "plain";
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        try {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    if ("plain" === options.responseType) {
+                        callback(xhr.responseText);
+                    } else if ("json" === options.responseType) {
+                        callback(JSON.parse(xhr.responseText));
+                    } else if ("xml" === options.responseType) {
+                        callback(xhr.responseXML);
+                    }
+                } else {
+                    log("received HTTP status " + xhr.status + " for " + options.url, "error");
+                    if (typeof (errorCallback) === "function") {
+                        errorCallback(xhr);
+                        return;
+                    }
+                    callback(null);
+                }
+            }
+        } catch (e) {
+            log("caught exception while processing request for " + options.url + ". Aborting. Exception: " + e, "error");
+            xhr.abort();
+            if (typeof (errorCallback) === "function") {
+                errorCallback(xhr, e);
+                return;
+            }
+            callback(null);
+        }
+    }
+    xhr.open(options.method, options.url, true);
+
+    for ( var key in options.headers) {
+        xhr.setRequestHeader(key, options.headers[key]);
+    }
+
+    if (options.body) {
+        xhr.send(options.body);
+    } else {
+        xhr.send();
+    }
+
+    return xhr;
+};
+
 /**
  * Polyfills
  */
@@ -179,7 +241,29 @@ atv.onAppEntry = function () {
 
     if (serverId && user) {
         log("Authenticate on server \"" + serverId + "\" with user \"" + user + "\"", "debug");
-        atv.loadURL(url + serverId + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || ""));
+        fetch({
+            url : url + "login",
+            method : "POST",
+            headers : {
+                "content-type" : "application/json"
+            },
+            body : JSON.stringify({
+                serverId : serverId,
+                user : user,
+                password : password || ""
+            })
+        }, function (response) {
+            atv.loadURL(url + serverId);
+        }, function (xhr) {
+            if (xhr && (xhr.status === 301 || xhr.status === 302)) {
+                if (xhr.responseText.indexOf("http") === 0) {
+                    url = xhr.responseText;
+                } else {
+                    url += xhr.responseText.indexOf("/") === 0 ? xhr.responseText.substring(1) : xhr.responseText;
+                }
+            }
+            atv.loadURL(url);
+        });
     } else {
         atv.loadURL(url + "settings");
     }

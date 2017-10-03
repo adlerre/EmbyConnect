@@ -67,9 +67,24 @@ function reloadNavbar(event) {
         var user = atvutils.keyValuePair("emby-userName");
         var password = atvutils.keyValuePair("emby-password");
 
-        var url = "<%=: [] | buildUrl %>" + serverId + "?user=" + encodeURIComponent(user) + "&password=" + encodeURIComponent(password || "");
-        req.open("GET", url, false);
-        req.send();
+        var url = "<%=: [] | buildUrl %>";
+
+        atvutils.fetch({
+            url : url + "login",
+            method : "POST",
+            headers : {
+                "content-type" : "application/json"
+            },
+            body : JSON.stringify({
+                serverId : serverId,
+                user : user,
+                password : password || ""
+            })
+        }, function (response) {
+            atv.loadURL(url + serverId);
+        }, function (xhr) {
+            atv.loadURL(atvutils.redirectURL(xhr));
+        });
     } else {
         logger.debug("reloadNavbar done: itemId " + navbarCurrentItemId + " - no action");
         event.cancel();
