@@ -16,6 +16,9 @@
 	"format": {
 		"date": "isoDate"
 	},
+	"action": {
+		"slideshow": "Slideshow"
+	},
 	"label": {
 		"actors": {
 			"one": "Actor",
