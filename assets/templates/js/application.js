@@ -37,6 +37,12 @@ function fetch(options, callback, errorCallback) {
                     } else if ("xml" === options.responseType) {
                         callback(xhr.responseXML);
                     }
+                } else if (xhr.status === 301 || xhr.status === 302) {
+                    if (typeof (errorCallback) === "function") {
+                        errorCallback(xhr);
+                        return;
+                    }
+                    callback(xhr.responseText);
                 } else {
                     log("received HTTP status " + xhr.status + " for " + options.url, "error");
                     if (typeof (errorCallback) === "function") {

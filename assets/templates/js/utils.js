@@ -33,6 +33,14 @@ var atvutils = ATVUtils = {
                                 callback(xhr.responseText);
                             }
                         }
+                    } else if (xhr.status === 301 || xhr.status === 302) {
+                        var redirectURL = atvutils.redirectURL(xhr);
+                        logger.info("received redirect to " + redirectURL);
+                        if (typeof (errorCallback) === "function") {
+                            errorCallback(xhr);
+                            return;
+                        }
+                        callback(redirectURL);
                     } else {
                         logger.error("received HTTP status " + xhr.status + " for " + options.url);
                         if (typeof (errorCallback) === "function") {
