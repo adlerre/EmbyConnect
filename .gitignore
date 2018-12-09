@@ -3,3 +3,4 @@
 /assets/certificates/*
 !/assets/certificates/README.md
 /node_modules/
+/package-lock.json

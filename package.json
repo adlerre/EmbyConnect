@@ -13,19 +13,19 @@
     "node": ">=0.6"
   },
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "chalk": "^2.3.0",
-    "commander": "^2.11.0",
-    "dateformat": "^3.0.2",
+    "body-parser": "^1.18.3",
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "dateformat": "^3.0.3",
     "ejs": "^1.0.0",
     "emby-apiclient": "git://github.com/adlerre/Emby.ApiClient.Javascript.git#master",
-    "express": "^4.16.2",
-    "http-proxy": "^1.16.2",
+    "express": "^4.16.4",
+    "http-proxy": "^1.17.0",
     "i18n": "^0.8.3",
     "langs": "^2.0.0",
-    "mime-types": "^2.1.17",
-    "node-forge": "^0.7.1",
-    "node-vibrant": "^3.0.0-alpha.2",
-    "selfsigned": "^1.10.1"
+    "mime-types": "^2.1.21",
+    "node-forge": "^0.7.6",
+    "node-vibrant": "^3.0.0",
+    "selfsigned": "^1.10.4"
   }
 }
