@@ -29,7 +29,7 @@
           </row>
           <row>
             <starRating>
-              <percentage><%- item.CommunityRating * 10 %></percentage>
+              <percentage><%- (item.CommunityRating || 0) * 10 %></percentage>
             </starRating>
           </row>
         </rows>

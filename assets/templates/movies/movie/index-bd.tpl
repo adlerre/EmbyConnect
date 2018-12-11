@@ -58,7 +58,7 @@
           </row>
           <row>
             <starRating>
-              <percentage><%- item.CommunityRating * 10 %></percentage>
+              <percentage><%- (item.CommunityRating || 0) * 10 %></percentage>
             </starRating>
             <label><%=: item.People | people:'Actor',5 | get:3 | extractText %></label>
             <label><%=: item.People | people:'Director',5 | get:3 | extractText %></label>
